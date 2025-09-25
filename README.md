@@ -4,11 +4,10 @@
 ## Description
 This repo contains the official code, data and sample inversions for our 3D-to-text inversion paper. 
 
-## Updates
 **25/9/2025** Code released!
 
 
-## Setup
+# Setup
 ```
 git clone https://github.com/qsong2001/Invert3D.git
 ```
@@ -28,6 +27,7 @@ pip install -e git+https://github.com/graphdeco-inria/diff-gaussian-rasterizatio
 pip install -e git+https://github.com/camenduru/simple-knn@main#egg=simple_knn
 ```
 
+
 You will also need the official MVDream text-to-3D checkpoint (sd-v1.5-4view), available through the [MVDream](https://github.com/bytedance/MVDream). 
 
 The final organization of the folder should be:
@@ -35,13 +35,21 @@ The final organization of the folder should be:
 ├── input  # Demo data sample
 ├── MVDream
 ├── textual_inversion
-
 └── sd-v1.5-4view.pt # text-to-3D pre-trained model
 ```
 
-## Usage
+Due to the version problem of pytorch_lighting, you shoud comment the code in lines 312-316 of src/taming-transformers/main.py.
+```
+    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, dataloader_idx):
+        self.log_img(pl_module, batch, batch_idx, split="train")
 
-### Inversion
+    def on_validation_batch_end(self, trainer, pl_module, outputs, batch, batch_idx, dataloader_idx):
+        self.log_img(pl_module, batch, batch_idx, split="val")
+```
+
+
+
+# Inversion
 
 To invert a 3D GS sample, run:
 ```

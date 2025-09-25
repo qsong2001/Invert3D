@@ -68,6 +68,8 @@ python inverse_mvdream.py --base configs/mvdream/real-mvdream-v1-finetune-obj-v3
 ```
 The final results are save in folder: ./logs.
 
+If you have any problem, please feel free to email me at: qsong2001@gmail.com.
+
 We are very appreciate for the open-source projects: [MV-Dream](https://github.com/bytedance/MVDream) and [textural_inversion](https://github.com/rinongal/textual_inversion).
 
 
